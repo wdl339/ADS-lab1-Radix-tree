@@ -1,39 +1,78 @@
 #include "radix_tree.hpp"
+#include <iostream>
 
 RadixTree::RadixTree()
 {
-    // To Be Implemented
+    root = new Node();
 }
 
 RadixTree::~RadixTree()
 {
-    // To Be Implemented
+    delete root;
 }
 
 void RadixTree::insert(int32_t value)
 {
-    // To Be Implemented
+    Node* tmp = root;
+    for (int i = 30; i >= 0; i-= 2)
+    {
+        int bit = (value >> i) & 0x3;
+        if (tmp->children[bit] == nullptr)
+        {
+            tmp->children[bit] = new Node(tmp);
+        }
+        tmp = tmp->children[bit];
+    }
 }
 
 void RadixTree::remove(int32_t value)
 {
-    // To Be Implemented
+    Node* tmp = root;
+    for (int i = 30; i >= 0; i-= 2)
+    {
+        int bit = (value >> i) & 0x3;
+        if (tmp->children[bit] == nullptr)
+        {
+            return;
+        }
+        tmp = tmp->children[bit];
+    }
+
+    while(tmp->hasNoChild() && tmp->parent != nullptr)
+    {
+        Node* parent = tmp->parent;
+        delete tmp;
+        tmp = parent;
+    }
+    
 }
 
 bool RadixTree::find(int32_t value)
 {
-    // To Be Implemented
+    Node* tmp = root;
+    for (int i = 30; i >= 0; i-= 2)
+    {
+        int bit = (value >> i) & 0x3;
+        if (tmp->children[bit] == nullptr)
+        {
+            return false;
+        }
+        tmp = tmp->children[bit];
+    }
     return true;
 }
 
 uint32_t RadixTree::size()
 {
-    // To Be Implemented
-    return 0;
+    return root->countSize();
 }
 
 uint32_t RadixTree::height()
 {
-    // To Be Implemented
-    return 0;
+    if (root->hasNoChild())
+    {
+        return 1;
+    } else {
+        return 17;
+    }
 }

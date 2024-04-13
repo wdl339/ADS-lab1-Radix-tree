@@ -4,20 +4,35 @@
 #include <algorithm>
 #include "tree.hpp"
 
-class Node{
+class CNode{
 public:
     uint32_t val;
     int len;
-    Node* parent;
-    Node* children[4];
+    CNode* parent;
+    CNode* children[4];
 
-    Node(Node *p = nullptr, uint32_t v, int l){
+    CNode(CNode *p = nullptr, uint32_t v = 0, int l = 0){
         val = v;
         len = l;
         parent = p;
         for(int i = 0; i < 4; i++){
             children[i] = nullptr;
         }
+    }
+
+    int hasOneChild(){
+        int count = 0;
+        int res;
+        for(int i = 0; i < 4; i++){
+            if(children[i] != nullptr){
+                count++;
+                res = i;
+            }
+        }
+        if(count == 1){
+            return res;
+        }
+        return -1;
     }
 
     bool hasNoChild(){
@@ -39,7 +54,17 @@ public:
         return count + 1;
     }
 
-    ~Node(){
+    uint32_t countHeight(){
+        uint32_t height = 0;
+        for(int i = 0; i < 4; i++){
+            if(children[i] != nullptr){
+                height = std::max(height, children[i]->countHeight());
+            }
+        }
+        return height + 1;
+    }
+
+    ~CNode(){
         for (int i = 0; i < 4; i++)
         {
             if (parent->children[i] == this)
@@ -60,7 +85,7 @@ public:
 
 class CompressedRadixTree : public Tree
 {
-    Node* root;
+    CNode* root;
 
 public:
     CompressedRadixTree();

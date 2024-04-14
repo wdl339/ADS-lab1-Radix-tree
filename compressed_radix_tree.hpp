@@ -1,5 +1,9 @@
 // implement a radix tree that support node compressino and store int32_t values
 // each parent node has 4 children, representing 2 bits
+
+#ifndef COMPRESSED_RADIX_TREE_H
+#define COMPRESSED_RADIX_TREE_H
+
 #include <cstdint>
 #include <algorithm>
 #include "tree.hpp"
@@ -98,3 +102,5 @@ public:
     uint32_t size();
     uint32_t height();
 };
+
+#endif

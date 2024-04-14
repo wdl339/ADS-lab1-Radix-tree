@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <cassert>
 #include <random>
+#include <climits>
 
 #define CANDIDATE_CNT 100000
 #define ZIPF_ALPHA 0.5

@@ -3,7 +3,8 @@
 
 enum TreeType {
     RadixTree,
-    CompressedRadixTree
+    CompressedRadixTree,
+    RbTree,
 };
 
 class Tree {

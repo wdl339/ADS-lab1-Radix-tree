@@ -1,3 +1,5 @@
+#ifndef RADIXTREE_H
+#define RADIXTREE_H
 
 #include <cstdint>
 #include "tree.hpp"
@@ -66,3 +68,5 @@ public:
     uint32_t size();
     uint32_t height();
 };
+
+#endif

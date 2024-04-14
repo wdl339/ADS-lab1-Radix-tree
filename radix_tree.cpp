@@ -6,11 +6,6 @@ RadixTree::RadixTree()
     root = new Node();
 }
 
-RadixTree::~RadixTree()
-{
-    delete root;
-}
-
 void RadixTree::insert(int32_t value)
 {
     Node* tmp = root;
@@ -75,4 +70,9 @@ uint32_t RadixTree::height()
     } else {
         return 17;
     }
+}
+
+RadixTree::~RadixTree()
+{
+    delete root;
 }

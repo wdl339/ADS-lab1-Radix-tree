@@ -5,11 +5,6 @@ CompressedRadixTree::CompressedRadixTree()
     root = new CNode();
 }
 
-CompressedRadixTree::~CompressedRadixTree()
-{
-    delete root;
-}
-
 void CompressedRadixTree::insert(int32_t value)
 {
     CNode* tmp = root;
@@ -139,4 +134,9 @@ uint32_t CompressedRadixTree::height()
 {
     
     return root->countHeight();
+}
+
+CompressedRadixTree::~CompressedRadixTree()
+{
+    delete root;
 }

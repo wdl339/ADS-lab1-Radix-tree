@@ -24,9 +24,31 @@ enum OpType {
     Remove,
 };
 
-void doWorkLoad1(Tree* tree, std::ofstream& outFile);
-void doWorkLoad2(Tree* tree, std::ofstream& outFile);
-void doWorkLoad3(Tree* tree, std::ofstream& outFile);
+std::string treeTypeToString(TreeType treeType){
+    switch (treeType) {
+        case RadixTree:
+            return "Radix Tree";
+        case CompressedRadixTree:
+            return "Compressed Radix Tree";
+        case RbTree:
+            return "RB Tree";
+    }
+}
+
+std::string opTypeToString(OpType opType){
+    switch (opType) {
+        case Find:
+            return "Find";
+        case Insert:
+            return "Insert";
+        case Remove:
+            return "Remove";
+    }
+}
+
+void doWorkLoad1(Tree* tree, std::ofstream& outFile, TreeType treeType);
+void doWorkLoad2(Tree* tree, std::ofstream& outFile, TreeType treeType);
+void doWorkLoad3(Tree* tree, std::ofstream& outFile, TreeType treeType);
 
 void preLoad(Tree *tree1, Tree *tree2, Tree *tree3){
     for(int i = 0; i < 1000; i++){
@@ -45,8 +67,8 @@ void statistics(std::vector<double> durations, std::ofstream& outFile, TreeType 
     double P90 = durations[durations.size() * 0.9];
     double P99 = durations[durations.size() * 0.99];
 
-    outFile << "Tree type: " << treeType << std::endl;
-    outFile << "Operation type: " << opType << std::endl;
+    outFile << "Tree type: " << treeTypeToString(treeType) << std::endl;
+    outFile << "Operation type: " << opTypeToString(opType) << std::endl;
     outFile << "Average: " << average << std::endl;
     outFile << "P50: " << P50 << std::endl;
     outFile << "P90: " << P90 << std::endl;
@@ -102,7 +124,7 @@ void doWorkLoad1(Tree* tree, std::ofstream& outFile, TreeType treeType){
         auto end = std::chrono::high_resolution_clock::now();
         auto elapsed_seconds = std::chrono::duration_cast<std::chrono::duration<double>>(end - start);
 
-        if (elapsed_seconds.count() >= 10.0) {
+        if (elapsed_seconds.count() >= 45.0) {
             break;
         }
     }
@@ -146,7 +168,7 @@ void doWorkLoad2(Tree* tree, std::ofstream& outFile, TreeType treeType){
         auto end = std::chrono::high_resolution_clock::now();
         auto elapsed_seconds = std::chrono::duration_cast<std::chrono::duration<double>>(end - start);
 
-        if (elapsed_seconds.count() >= 10.0) {
+        if (elapsed_seconds.count() >= 45.0) {
             break;
         }
     }
@@ -210,7 +232,7 @@ void doWorkLoad3(Tree* tree, std::ofstream& outFile, TreeType treeType){
         auto end = std::chrono::high_resolution_clock::now();
         auto elapsed_seconds = std::chrono::duration_cast<std::chrono::duration<double>>(end - start);
 
-        if (elapsed_seconds.count() >= 10.0) {
+        if (elapsed_seconds.count() >= 45.0) {
             break;
         }
     }

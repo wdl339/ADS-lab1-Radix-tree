@@ -186,26 +186,27 @@ void RBTree::remove(int key) {
         return;
     }
 
-    // 只有一个孩子或无孩子的情况
-    // 只有左孩子或右孩子, 则直接将孩子放在 node 位置上
     if (node->left) {
         child = node->left;
     } else {
         child = node->right;
     }
+
     parent = node->parent;
     color = node->color;
-    child->parent = parent;
-    // node 有父结点
+    if (child)
+        child->parent = parent;
+    
     if (parent) {
-        // node 为其父节点的左孩子
-        if (node == parent->left)
+        if (node == parent->left) {
             parent->left = child;
-        else
+        } else {
             parent->right = child;
+        }
     } else {
         root = child;
     }
+
     if (color == BLACK) {
         eraseFix(child, parent);
     }

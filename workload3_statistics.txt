@@ -1,0 +1,63 @@
+Tree type: 0
+Operation type: 0
+Average: 4.28731e-07
+P50: 2.7e-07
+P90: 9.72e-07
+P99: 1.323e-06
+
+Tree type: 0
+Operation type: 1
+Average: 5.20096e-07
+P50: 3.8e-07
+P90: 9.72e-07
+P99: 1.373e-06
+
+Tree type: 0
+Operation type: 2
+Average: 6.38762e-07
+P50: 3.81e-07
+P90: 1.453e-06
+P99: 1.944e-06
+
+Tree type: 1
+Operation type: 0
+Average: 1.64961e-07
+P50: 1.2e-07
+P90: 2.81e-07
+P99: 5.51e-07
+
+Tree type: 1
+Operation type: 1
+Average: 1.92963e-07
+P50: 1.51e-07
+P90: 3.2e-07
+P99: 5.91e-07
+
+Tree type: 1
+Operation type: 2
+Average: 2.23642e-07
+P50: 1.7e-07
+P90: 3.81e-07
+P99: 7.22e-07
+
+Tree type: 2
+Operation type: 0
+Average: 2.12801e-07
+P50: 2e-07
+P90: 2.8e-07
+P99: 5.01e-07
+
+Tree type: 2
+Operation type: 1
+Average: 2.77702e-07
+P50: 2.61e-07
+P90: 3.91e-07
+P99: 6.31e-07
+
+Tree type: 2
+Operation type: 2
+Average: 2.45649e-07
+P50: 2.21e-07
+P90: 3.21e-07
+P99: 5.81e-07
+

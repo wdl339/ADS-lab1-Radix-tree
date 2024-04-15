@@ -17,11 +17,11 @@ radix_tree.o: radix_tree.cpp radix_tree.hpp
 compressed_radix_tree.o: compressed_radix_tree.cpp compressed_radix_tree.hpp
 	$(CC) -std=$(STD) -g -c compressed_radix_tree.cpp
 
-runtest: ycsb_test.cpp rb_tree.cpp radix_tree.cpp compressed_radix_tree.cpp
+ycsb: ycsb_test.cpp rb_tree.cpp radix_tree.cpp compressed_radix_tree.cpp
 	$(CC) ycsb_test.cpp rb_tree.cpp radix_tree.cpp compressed_radix_tree.cpp -o test
 	./test
 
-cleantest:
+ycsb_clean:
 	rm -f test workload1_statistics.txt workload2_statistics.txt workload3_statistics.txt
 
 grade: $(prog)
